@@ -11,6 +11,7 @@ import {
 import Login from './container/Login/Login';
 import Landing from './pages/Landing';
 import FuelHistory from './pages/FuelHistory';
+import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
 import Userfront from "@userfront/react";
 
@@ -27,9 +28,9 @@ function App() {
         <Route path='/Register' element={<Register/>} />
         <Route path='/FuelHistory' element={<FuelHistory/>} />
         {/* Replace the Dashboard with the user profile */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
         <Route
-            path="/dashboard"
+            path="/Dashboard"
             element={
               <RequireAuth>
                 <Dashboard />
@@ -52,15 +53,15 @@ function RequireAuth({ children }) {
   return children;
 }
 
-{/* Delete if replaced with user profile */}
-function Dashboard() {
-  const userData = JSON.stringify(Userfront.user, null, 2);
-  return (
-    <div>
-      <h2>Dashboard</h2>
-      <pre>{userData}</pre>
-      <button onClick={Userfront.logout}>Logout</button>
-    </div>
-  );
-}
+//{/* Delete if replaced with user profile */}
+//function Dashboard() {
+  //const userData = JSON.stringify(Userfront.user, null, 2);
+ // return (
+  //  <div>
+  //    <h2>Dashboard</h2>
+  //    <pre>{userData}</pre>
+   //   <button onClick={Userfront.logout}>Logout</button>
+   // </div>
+ // );
+//}
 export default App;
