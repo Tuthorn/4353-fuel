@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import NavigationBar from './components/NavigationBar';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import Login from './container/Login/Login';
+import Landing from './pages/Landing';
+import Register from './pages/Register';
+import Userfront from "@userfront/react";
+
+Userfront.init("demo1234");
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+ <>
+<Router>
+<NavigationBar/>
+<Routes>
+        <Route exact path='/Landing' element={<Landing />} />
+        <Route path='/Login' element={<Login/>} />
+        <Route path='/Register' element={<Register/>} />
+        {/* Replace the Dashboard with the user profile */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }      
+            />
+    </Routes>
+</Router>
+ </>
   );
 }
 
+function RequireAuth({ children }) {
+  let location = useLocation();
+  if (!Userfront.tokens.accessToken) {
+    // Redirect to the /login page
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return children;
+}
+
+{/* Delete if replaced with user profile */}
+function Dashboard() {
+  const userData = JSON.stringify(Userfront.user, null, 2);
+  return (
+    <div>
+      <h2>Dashboard</h2>
+      <pre>{userData}</pre>
+      <button onClick={Userfront.logout}>Logout</button>
+    </div>
+  );
+}
 export default App;
