@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Login from './container/Login/Login';
 import Landing from './pages/Landing';
+import FuelHistory from './pages/FuelHistory';
 import Register from './pages/Register';
 import Userfront from "@userfront/react";
 
@@ -24,6 +25,7 @@ function App() {
         <Route exact path='/Landing' element={<Landing />} />
         <Route path='/Login' element={<Login/>} />
         <Route path='/Register' element={<Register/>} />
+        <Route path='/FuelHistory' element={<FuelHistory/>} />
         {/* Replace the Dashboard with the user profile */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route

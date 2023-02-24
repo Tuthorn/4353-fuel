@@ -1,10 +1,10 @@
 import React from "react";
 
-const Landing = () => {
+const FuelHistory = () => {
 return (
 	<div>
 	<h1>
-		Gallons Requested:f
+		Gallons Requested:
 	</h1>
     <h1>
         Delivery Address:
@@ -22,4 +22,7 @@ return (
 );
 };
 
-export default Landing;
+
+export default FuelHistory;
+
+
