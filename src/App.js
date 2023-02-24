@@ -11,11 +11,11 @@ import {
 import Login from './container/Login/Login';
 import Landing from './pages/Landing';
 import FuelHistory from './pages/FuelHistory';
-import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
 import Userfront from "@userfront/react";
 
-Userfront.init("demo1234");
+  const Submit = (e) => {
+    e.preventDefault();
 
 function App() {
   return (
@@ -28,9 +28,9 @@ function App() {
         <Route path='/Register' element={<Register/>} />
         <Route path='/FuelHistory' element={<FuelHistory/>} />
         {/* Replace the Dashboard with the user profile */}
-        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
-            path="/Dashboard"
+            path="/dashboard"
             element={
               <RequireAuth>
                 <Dashboard />
@@ -43,25 +43,22 @@ function App() {
   );
 }
 
-function RequireAuth({ children }) {
-  let location = useLocation();
-  if (!Userfront.tokens.accessToken) {
-    // Redirect to the /login page
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
+    //Calculated total amount due = price * gallons;
+    const calculatedTotalAmountDue = calculatedSuggestedPrice * gallonsRequested;
 
-  return children;
-}
+    setSuggestedPrice(calculatedSuggestedPrice.toFixed(2));
+    setTotalAmountDue(calculatedTotalAmountDue.toFixed(2));
+  };
 
 //{/* Delete if replaced with user profile */}
 //function Dashboard() {
   //const userData = JSON.stringify(Userfront.user, null, 2);
- // return (
+  //return (
   //  <div>
-  //    <h2>Dashboard</h2>
-  //    <pre>{userData}</pre>
+   //   <h2>Dashboard</h2>
+   //   <pre>{userData}</pre>
    //   <button onClick={Userfront.logout}>Logout</button>
-   // </div>
- // );
+    //</div>
+  //);
 //}
 export default App;
