@@ -12,6 +12,7 @@ import Login from './container/Login/Login';
 import Landing from './pages/Landing';
 import FuelHistory from './pages/FuelHistory';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
 import Userfront from "@userfront/react";
 
 Userfront.init("demo1234");
@@ -27,12 +28,12 @@ function App() {
         <Route path='/Register' element={<Register/>} />
         <Route path='/FuelHistory' element={<FuelHistory/>} />
         {/* Replace the Dashboard with the user profile */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/Profile" element={<Profile />} />
         <Route
-            path="/dashboard"
+            path="/Dashboard"
             element={
               <RequireAuth>
-                <Dashboard />
+                <Profile />
               </RequireAuth>
             }      
             />
@@ -55,12 +56,12 @@ function RequireAuth({ children }) {
 {/* Delete if replaced with user profile */}
 function Dashboard() {
   const userData = JSON.stringify(Userfront.user, null, 2);
-  return (
-    <div>
+ return (
+   <div>
       <h2>Dashboard</h2>
-      <pre>{userData}</pre>
+     <pre>{userData}</pre>
       <button onClick={Userfront.logout}>Logout</button>
     </div>
-  );
+ );
 }
 export default App;

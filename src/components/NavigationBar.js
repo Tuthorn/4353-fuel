@@ -11,6 +11,8 @@ function NavigationBar() {
           <Nav className="me-auto">
             <Nav.Link href="Login">Login</Nav.Link>
             <Nav.Link href="Register">Sign Up</Nav.Link>
+            <Nav.Link href="FuelHistory">FuelHistory</Nav.Link>
+            <Nav.Link href="Profile">Profile</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
