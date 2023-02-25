@@ -13,6 +13,7 @@ function NavigationBar() {
             <Nav.Link href="Register">Sign Up</Nav.Link>
             <Nav.Link href="FuelHistory">FuelHistory</Nav.Link>
             <Nav.Link href="Dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="quote">quote</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

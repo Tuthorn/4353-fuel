@@ -13,6 +13,7 @@ import Landing from './pages/Landing';
 import FuelHistory from './pages/FuelHistory';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Quote from './pages/Quote';
 import Userfront from "@userfront/react";
 
 Userfront.init("demo1234");
@@ -27,6 +28,7 @@ function App() {
         <Route path='/Login' element={<Login/>} />
         <Route path='/Register' element={<Register/>} />
         <Route path='/FuelHistory' element={<FuelHistory/>} />
+        <Route path='/quote' element={<Quote/>} />
         {/* Replace the Dashboard with the user profile */}
         <Route path="/Profile" element={<Profile />} />
         <Route
@@ -34,6 +36,7 @@ function App() {
             element={
               <RequireAuth>
                 <Profile />
+                
               </RequireAuth>
             }      
             />
@@ -64,4 +67,8 @@ function Dashboard() {
     </div>
  );
 }
+
+
+
+
 export default App;
